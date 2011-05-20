@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>beforeRunningCommand</key>
+  <string>saveActiveFile</string>
+  <key>command</key>
+  <string>#!/usr/bin/env ruby
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
+
+TextMate::Executor.run(File.join(ENV["TM_BUNDLE_SUPPORT"], "run.sh"), ENV["TM_FILEPATH"]) do |line,type|
+  if line =~ /(.*):([0-9]+):([0-9]+):(.*)/ then
+    unless ENV["TM_FILE_IS_UNTITLED"] == "true"
+       "&lt;a href=\"txmt://open?url=file://#{htmlize($1)}&amp;line=#{$2}&amp;column=#{$3}\"&gt;#{htmlize($1)}:#{$2}:#{$3}&lt;/a&gt;:#{htmlize($4)}"
+    else
+      "&lt;a href=\"txmt://open?line=#{$2}&amp;column=#{$3}\"&gt;#{htmlize($1)}:#{$2}:#{$3}&lt;/a&gt;:#{htmlize($4)}"
+    end
+  end
+end</string>
+  <key>fallbackInput</key>
+  <string>document</string>
+  <key>input</key>
+  <string>document</string>
+  <key>keyEquivalent</key>
+  <string>@r</string>
+  <key>name</key>
+  <string>Run Script</string>
+  <key>output</key>
+  <string>showAsHTML</string>
+  <key>scope</key>
+  <string>source.scheme</string>
+  <key>uuid</key>
+  <string>CBFEB6F9-D38C-4726-BD16-325E3FCC0C6B</string>
+</dict>
+</plist>
