@@ -4,12 +4,6 @@
 <dict>
   <key>name</key>
   <string>MIT-Scheme</string>
-  <key>ordering</key>
-  <array>
-    <string>E11C5144-5D26-4F38-B7DE-FDEB7C5FACC9</string>
-    <string>9BD1BDE1-6CDD-4C18-B9F2-FA38F2FB8114</string>
-    <string>3EC2CFD0-909C-4692-AC29-1A60ADBC161E</string>
-  </array>
   <key>uuid</key>
   <string>DDC23AFE-8AC1-4391-A373-0BC94EC2DFF3</string>
 </dict>

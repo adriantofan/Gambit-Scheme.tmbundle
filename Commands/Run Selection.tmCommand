@@ -8,7 +8,7 @@
   <string>#!/usr/bin/env ruby
 require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
 
-TextMate::Executor.run(File.join(ENV["TM_BUNDLE_SUPPORT"], "run.sh"), ENV["TM_FILEPATH"]) do |line,type|
+TextMate::Executor.run(File.join(ENV["TM_BUNDLE_SUPPORT"], "run-selection.sh"), ENV["TM_SELECTED_TEXT"]) do |line,type|
   if line =~ /(.*):([0-9]+):([0-9]+):(.*)/ then
     unless ENV["TM_FILE_IS_UNTITLED"] == "true"
        "&lt;a href=\"txmt://open?url=file://#{htmlize($1)}&amp;line=#{$2}&amp;column=#{$3}\"&gt;#{htmlize($1)}:#{$2}:#{$3}&lt;/a&gt;:#{htmlize($4)}"
