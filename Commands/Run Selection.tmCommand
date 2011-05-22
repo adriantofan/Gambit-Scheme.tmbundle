@@ -3,33 +3,23 @@
 <plist version="1.0">
 <dict>
   <key>beforeRunningCommand</key>
-  <string>saveActiveFile</string>
+  <string>nop</string>
   <key>command</key>
-  <string>#!/usr/bin/env ruby
-require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
-
-TextMate::Executor.run(File.join(ENV["TM_BUNDLE_SUPPORT"], "run-selection.sh"), ENV["TM_SELECTED_TEXT"]) do |line,type|
-  if line =~ /(.*):([0-9]+):([0-9]+):(.*)/ then
-    unless ENV["TM_FILE_IS_UNTITLED"] == "true"
-       "&lt;a href=\"txmt://open?url=file://#{htmlize($1)}&amp;line=#{$2}&amp;column=#{$3}\"&gt;#{htmlize($1)}:#{$2}:#{$3}&lt;/a&gt;:#{htmlize($4)}"
-    else
-      "&lt;a href=\"txmt://open?line=#{$2}&amp;column=#{$3}\"&gt;#{htmlize($1)}:#{$2}:#{$3}&lt;/a&gt;:#{htmlize($4)}"
-    end
-  end
-end</string>
+  <string>. "$TM_SUPPORT_PATH/lib/html.sh"
+echo "$TM_SELECTED_TEXT" | mit-scheme | pre</string>
   <key>fallbackInput</key>
-  <string>document</string>
+  <string>line</string>
   <key>input</key>
-  <string>document</string>
+  <string>selection</string>
   <key>keyEquivalent</key>
-  <string>@r</string>
+  <string>@R</string>
   <key>name</key>
-  <string>Run Script</string>
+  <string>Run Selection</string>
   <key>output</key>
   <string>showAsHTML</string>
   <key>scope</key>
   <string>source.scheme</string>
   <key>uuid</key>
-  <string>E11C5144-5D26-4F38-B7DE-FDEB7C5FACC9</string>
+  <string>CAAB8762-3593-4D35-83E0-5F3E369A77DC</string>
 </dict>
 </plist>
