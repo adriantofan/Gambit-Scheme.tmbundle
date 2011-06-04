@@ -6,8 +6,7 @@
   <string>nop</string>
   <key>command</key>
   <string>. "$TM_SUPPORT_PATH/lib/html.sh"
-echo "$TM_SELECTED_TEXT" &gt; /tmp/textmate-command-$$.scm
-mit-scheme &lt; /tmp/textmate-command-$$.scm | pre; exit_status=$?; rm /tmp/textmate-command-$$.scm; exit $exit_status</string>
+mit-scheme --batch-mode --eval "$TM_SELECTED_TEXT" | pre; exit_status=$?</string>
   <key>fallbackInput</key>
   <string>line</string>
   <key>input</key>
